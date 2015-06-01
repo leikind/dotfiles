@@ -1,0 +1,21 @@
+export PS1='\[\e]0;\u@\h: \w\a\]\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\    033[01;31m\]\u\[\033[01;33m\]@\[\033[01;36m\]\h \[\033[01;33m\]\w \[\033[01;35m\]\$ \[\03    3[00m\]'
+
+
+export RAILS_ENV=production
+alias logd="tail -f log/development.log"
+alias logp="tail -f log/production.log"
+
+
+alias rspec="rspec -c"
+alias ls="ls -G"
+alias grepl='grep  --line-number'
+alias logd="tail -f log/development.log"
+alias logp="tail -f log/production.log"
+alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
+
+alias be='bundle exec'
+alias begm='bundle exec rails g migration'
+alias bem='bundle exec rake db:migrate'
+alias bes='bundle exec rake spec'
+alias bec='bundle exec rails c'
+alias ber='bundle exec rails r'
