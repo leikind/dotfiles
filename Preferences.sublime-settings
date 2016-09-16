@@ -3,7 +3,7 @@
 	"auto_complete": true,
 	"auto_complete_commit_on_tab": false,
 	"auto_complete_with_fields": false,
-	"color_scheme": "Packages/User/SublimeLinter/Mac Classic (SL).tmTheme",
+	"color_scheme": "Packages/Color Scheme - Default/Mac Classic.tmTheme",
 	"env":
 	{
 		"PATH": "/usr/local/opt/rbenv/shims:/Users/leikind/bin:/usr/local/sbin:/usr/local/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
