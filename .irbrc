@@ -18,4 +18,4 @@ begin
   AwesomePrint.irb!
 rescue LoadError
 end
-# puts "♡ ♡ ♡"
+puts "♡ ♡ ♡"

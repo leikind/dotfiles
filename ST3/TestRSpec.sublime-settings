@@ -1,0 +1,15 @@
+{
+  "env": {
+    "RBENV_ROOT": "/usr/local/opt/rbenv"
+  },
+  "check_for_rbenv":       true,
+  "check_for_bundler":     true,
+
+  "check_for_rvm":         false,
+  "check_for_system_ruby": false,
+  "check_for_spring":      true,
+
+  "paths_rbenv": "/usr/local/opt/rbenv/bin/rbenv",
+  "paths_bin_rspec": "bundle exec  ./bin/rspec"
+}
+

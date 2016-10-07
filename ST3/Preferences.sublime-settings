@@ -3,7 +3,7 @@
 	"auto_complete": true,
 	"auto_complete_commit_on_tab": false,
 	"auto_complete_with_fields": false,
-	"color_scheme": "Packages/Color Scheme - Default/Mac Classic.tmTheme",
+	"color_scheme": "Packages/Visual Studio Dark Yuri.tmTheme",
 	"env":
 	{
 		"PATH": "/usr/local/opt/rbenv/shims:/Users/leikind/bin:/usr/local/sbin:/usr/local/bin:/usr/local/opt/rbenv/shims:/usr/local/opt/rbenv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
@@ -21,27 +21,8 @@
 	"show_line_endings": true,
 	"tab_completion": false,
 	"tab_size": 2,
-	"theme": "Soda Light 3.sublime-theme",
+	"theme": "Soda Dark 3.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": false
 }
-
-// All Autocomplete
-// Better CoffeeScript
-// ColorPicker
-// Colorsublime
-// Colorsublime - Themes
-// DashDoc
-// Elixr
-// ExportHtml
-// File Rename
-// Haml
-// HTML Beautify
-// Indent XML
-// Package Control
-// Pretty JSON
-// Ruby Slim
-// Sass
-// SideBarEnhancements
-// Theme - Soda

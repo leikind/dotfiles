@@ -25,7 +25,8 @@
   # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
   # Example format: plugins=(rails git textmate ruby lighthouse)
   # plugins=(git bundler gemmacports osx ruby rbenv textmate rake)
-  plugins=(git  osx rbenv bundler  rails zsh-syntax-highlighting)
+  # plugins=(git osx rbenv bundler  rails zsh-syntax-highlighting)
+  plugins=(git osx rbenv bundler zsh-syntax-highlighting)
 
   source $ZSH/oh-my-zsh.sh
 
@@ -69,29 +70,56 @@
 
   alias rspec="rspec -c"
   alias ls="ls -G"
+  alias less="less -N"
   alias gitx='gitx .'
-  alias subl='subl -n'
+  # alias subl='subl -n'
   alias grepl='grep  --line-number'
   alias logd="tail -f log/development.log"
   alias logp="tail -f log/production.log"
+  alias logt="tail -f log/test.log"
   alias duf='du -sk * | sort -n | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
-
+  alias openports='lsof -i -P | grep -i "listen"'
   alias be='bundle exec'
-  alias begm='bundle exec rails g migration'
-  alias bem='bundle exec rake db:migrate'
-  alias bes='bundle exec rake spec'
-  alias bec='bundle exec rails c'
-  alias ber='bundle exec rails r'
 
-  alias bet="bundle exec thin start -p 3000"
+  alias allover='dropdb frontback_test && dropdb frontback_development && createdb frontback_test && createdb frontback_development && bundle exec rake db:migrate && RAILS_ENV=test  bundle exec rake db:migrate && bundle exec annotate'
 
-  alias upgradebrew="brew outdated | awk '{print $1}' | xargs echo"
+### <HEROKU ALIASES>  ###
 
-### </ALIASES>  ###
+  # Run psql on the default Heroku app
+  alias hsql='heroku pg:psql'
+
+  # Run psql on the FB master
+  alias hsqlm='heroku pg:psql -a frontback HEROKU_POSTGRESQL_BRONZE'
+
+  # Run psql on the FB slave
+  alias hsqls='heroku pg:psql -a frontback HEROKU_POSTGRESQL_IVORY'
+
+  # Run psql on the FB staging
+  alias hsqlst='heroku pg:psql -a frontback-staging'
+
+  # Run irb in FB production
+  alias hirbp="heroku run 'rails c' -a frontback"
+
+  # Run irb in FB staging
+  alias hirbs="heroku run 'rails c' -a frontback-staging"
+
+  # Stream FB production logs
+  alias hlogp="heroku logs -t -d web -a frontback"
+
+  # Stream FB staging logs
+  alias hlogs="heroku logs -t -d web -a frontback-staging"
+
+  # Migrate FB production DB
+  alias hmigp='heroku run "rake db:migrate" -a frontback'
+
+  # Migrate FB staging DB
+  alias hmigs='heroku run "rake db:migrate" -a frontback-staging'
+
+### </HEROKU ALIASES>  ###
 
 ####  <VARS> ####
 
-  export PATH="/Users/leikind/bin:/usr/local/sbin:/usr/local/bin:/Users/leikind/Library/Android/sdk/tools:/Users/leikind/Library/Android/sdk/platform-tools:$PATH"
+  export PATH="/Users/leikind/bin:/usr/local/sbin:/usr/local/bin:/Users/leikind/projects/android/tools:/Users/leikind/projects/android/platform-tools:/Users/leikind/projects/golang/bin:$PATH"
   export LC_CTYPE=en_US.UTF-8
   export EDITOR="subl -n"
   export GREP_OPTIONS='--color=auto'
@@ -100,9 +128,15 @@
   export LESSOPEN='|~/.lessfilter %s'
   export LSCOLORS=""
 
+  export GOPATH=/Users/leikind/projects/golang
+
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
 ####  </VARS> ####
 
 eval "$(rbenv init -)"
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 

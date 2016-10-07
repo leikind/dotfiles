@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+# Quick and dirty script to merge N small mp3 files in the current directory into files with duration ~30 minutes
+# The power of Unix + the power of Ruby :)
+
+# Question: how to reduce the number of used tools (mplayer, sox, and lame) ?
+
+i = 1
+MINUTES=120
+threshold = 60 * MINUTES
+
+`mkdir out 2> /dev/null`
+
+merge = lambda{|tuple|
+  duration, list = tuple
+  list = list.map{|f| "'#{f}'"}.join(' ')
+  STDERR.puts "#{list} => out/#{i}.mp3 (#{duration} seconds, #{(duration / 6).round / 10} minutes)"
+  `sox #{list} -t wavpcm - | lame --silent - > "out/#{i}.mp3"`
+  
+  i += 1
+}
+
+merge.call Dir['*.mp3'].map{|fn|
+  [fn, `mplayer -identify -ao null -vo null -frames 0 "#{fn}"  | grep ^ID_LENGTH= | cut -d = -f 2`.to_f] 
+}.inject([0, []]){|memo, tuple|
+
+  res = [memo[0] + tuple[1], memo[1] + [tuple[0]]]
+
+  if res[0] > threshold
+    merge.call res
+    [0, []]
+  else
+    res
+  end
+}
+
